@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>审批列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link th:href="@{/css/style.css}" rel='stylesheet' type='text/css' />
+    <!-- Graph CSS -->
+    <!--<link th:href="@{/css/font-awesome.css}" rel="stylesheet">-->
+    <!-- jQuery -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
+    <!-- lined-icons -->
+    <link rel="stylesheet" th:href="@{/css/icon-font.min.css}" type='text/css' />
+    <!-- //lined-icons -->
+    <script src="../static/js/jquery-1.10.2.min.js" th:src="@{/js/jquery-1.10.2.min.js}"></script>
+    <!--<link th:href="@{/css/barChart.css}" rel='stylesheet' type='text/css' />-->
+    <link th:href="@{/css/fabochart.css}" rel='stylesheet' type='text/css' />
+    <!--clock init-->
+    <script src="../static/js/css3clock.js" th:src="@{/js/css3clock.js}"></script>
+    <!--Easy Pie Chart-->
+
+    <script src="../static/script/refer.js" th:src="@{/script/refer.js}"></script>
+</head>
+<body>
+<div class="page-container">
+    <div class="left-content">
+        <div class="inner-content" align="center" style="padding-top:5%;">
+            <div class="header-section">
+                <div class="clearfix"></div>
+            </div>
+            <!--此处插入表格和按钮-->
+            <input type="hidden" id="referId" th:value="${referInfo.id}">
+            <input type="hidden" id="userName" th:value="${referInfo.userName}">
+            <table border="1" cellspacing="0" cellpadding="0">
+                <tr>
+                    <th style="float: left;color: blueviolet">路径:<span style="color: crimson;font-size: 8px">*每一行一个路径，中间不需要任何标点符号，以空格分行</span></th>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea id="path" rows="10" cols="80" style="font-size: 16px" th:text="${referInfo.path}"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="float: left;color: blueviolet">备注:</th>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea id="remark" rows="4" cols="80" style="font-size: 16px" th:text="${referInfo.remark}"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" onclick="reRefer();" value="重新提交">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="sidebar-menu">
+            <header class="logo">
+                <a> <span id="logo"> <h1>CODETOOL</h1></span>
+                </a>
+            </header>
+            <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
+            <div class="down">
+                <a href="/refer/api/findReferInfo"><span class=" name-caret"
+                                                         th:each="cookie :${#httpServletRequest.getCookies()}"
+                                                         th:if="${cookie.getName().equals('userName')}"
+                                                         th:text="${cookie.getValue()}"></span></a>
+                <ul>
+                    <li><a class="tooltips" href="/login/api/logout"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
+                </ul>
+            </div>
+            <div class="menu">
+                <ul id="menu" >
+                    <li><a href="/refer/api/findReferInfo"><i class="fa fa-tachometer"></i> <span>申请列表</span></a></li>
+                    <li><a href="/audit/api/getRefers"><i class="fa fa-tachometer"></i> <span>审批列表</span></a></li>
+                    <li><a href="/refer/api/findFinishReferInfo"><i class="fa fa-tachometer"></i> <span>已审批记录</span></a></li>
+                </ul>
+                </li>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+</div>
+</body>
+</html>

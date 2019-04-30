@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:>
+<head>
+    <meta charset="UTF-8">
+    <title>申请列表</title>
+    <script src="../static/jquery-1.3.2.js" th:src="@{/jquery-1.3.2.js}"></script>
+    <script src="../static/script/refer.js" th:src="@{/script/refer.js}"></script>
+</head>
+<body>
+
+<div>
+    <input type="button" value="增加申请" onclick="openAddRefer();">
+</div>
+
+    <div>
+        <table border="1">
+            <tr>
+                <th>序号</th>
+                <th>路径</th>
+                <th>申请时间</th>
+                <th>状态</th>
+                <th>审批人</th>
+                <th>审批时间</th>
+                <th>查看</th>
+                <th>操作</th>
+            </tr>
+            <tr th:each="referInfo,referInfoStat:${referInfos}">
+                <td th:text="${referInfoStat.index + 1}"></td>
+                <td th:text="${referInfo.path}"></td>
+                <td th:text="${#dates.format(referInfo.referTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <td th:switch="${referInfo.status}">
+                    <p th:case="1">提交中</p>
+                    <p th:case="2">过期</p>
+                    <p th:case="3">通过</p>
+                    <p th:case="4">未通过</p>
+                </td>
+                <td th:text="${referInfo.auditor}"></td>
+                <td th:text="${#dates.format(referInfo.auditTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <td>
+                    <!--<a th:href="'/refer/api/getReferInfoById?referId='+${referInfo.id}" >查看</a>-->
+                    <input type="button" value="查看" th:onclick="'getReferInfo('+${referInfo.id}+');'">
+                </td>
+                <td>
+                    <!--<a th:href="'/refer/api/deleteRefer?referId='+${referInfo.id}">删除</a>-->
+                    <input type="button" value="删除" th:onclick="'deleteRefer('+${referInfo.id}+');'">
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</body>
+</html>

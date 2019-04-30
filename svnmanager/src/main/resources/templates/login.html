@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>登录</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<!-- Custom CSS -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<!-- Graph CSS -->
+<link rel="stylesheet" th:href="@{/css/font-awesome.css}">
+<!-- jQuery -->
+<link href='https://fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
+<!-- lined-icons -->
+<link rel="stylesheet" th:href="@{/css/icon-font.min.css}">
+<!-- //lined-icons -->
+<script src="../static/js/jquery-1.10.2.min.js" th:src="@{/js/jquery-1.10.2.min.js}"></script>
+<script src="../static/script/login.js" th:src="@{/script/login.js}"></script>
+
+	<!--clock init-->
+</head> 
+<body>
+<div class="error_page">
+	<!--/login-top-->
+
+	<div class="error-top">
+		<h2 class="inner-tittle page">SVN TOOL</h2>
+		<div class="login">
+			<h3 class="inner-tittle t-inner">Login</h3>
+			<!--<div class="buttons login">-->
+				<!--<ul>-->
+					<!--<li><a href="#" class="hvr-sweep-to-right">Facebook</a></li>-->
+					<!--<li class="lost"><a href="#" class="hvr-sweep-to-left">Twitter</a> </li>-->
+					<!--<div class="clearfix"></div>-->
+				<!--</ul>-->
+			<!--</div>-->
+			<form action="/login/api/nameLogin">
+				<input name="userName" type="text" class="text" value="please enter your userName" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'please enter your userName';}" >
+				<input name="password" type="password" value="P@ssw0rd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'P@ssw0rd';}">
+				<div class="submit"><input type="submit" onclick="login();" value="Login" ></div>
+				<div class="clearfix"></div>
+
+				<div class="new">
+					<p>账号密码为SVN账号密码。</p>
+					<p>如果您没有账户，请联系管理员！</p>
+					<div class="clearfix"></div>
+				</div>
+			</form>
+		</div>
+
+
+	</div>
+
+
+	<!--//login-top-->
+</div>
+
+<!--//login-->
+<!--footer section start-->
+<div class="footer">
+	<!--<div class="error-btn">-->
+		<!--<a class="read fourth" href="index.html">Return to Home</a>-->
+	<!--</div>-->
+	</div>
+<script src="../static/js/jquery.nicescroll.js" th:src="@{/js/jquery.nicescroll.js}"></script>
+<script src="../static/js/scripts.js" th:src="@{/js/scripts.js}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

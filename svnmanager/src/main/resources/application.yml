@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+#  thymeleaf:
+#    prefix: classpath:/templates/
+
+manager:
+  name: linb,nelson
